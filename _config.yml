@@ -25,8 +25,12 @@ github_username:  voltelxu
 # Build settings
 markdown: kramdown
 theme: minima
+keep_files: ["-img"]
 plugins:
   - jekyll-feed
+
+include:
+  - "_img"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
