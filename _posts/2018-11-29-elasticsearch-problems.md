@@ -7,7 +7,7 @@ categories: es
 
 #### 1、can not run elasticsearch as root
 
-	elasticsearch 不能使用root用户安装，需要新建一个用户：
+elasticsearch 不能使用root用户安装，需要新建一个用户：
 
 ```shell
 adduser es //添加用户
@@ -18,11 +18,11 @@ su es //以es用户进入
 
 #### 2、bootstrap checks failed
 
-	用root用户修改：
+用root用户修改：
 	
-		/etc/security/limits.conf
+/etc/security/limits.conf
 	
-	插入：
+插入：
 
 ```
 *          soft      nofile       65536
@@ -31,15 +31,15 @@ su es //以es用户进入
 *          hard      nproc       65537
 ```
 
- 	修改：
+修改：
 
-		/etc/sysctl.conf
+/etc/sysctl.conf
 
 ```shell
 vm.max_map_count = 655360
 ```
 
-	最后执行：
+最后执行：
 
 ```shell
 sysctl -p
@@ -47,7 +47,7 @@ sysctl -p
 
 #### 3、tips
 
-	获取一个进程的pid值：
+获取一个进程的pid值：
 
 ```shell
 ps -aef|grep service|cut -c 4-10
@@ -55,7 +55,7 @@ ps -aef|grep service|cut -c 4-10
 
 #### 4、 搜索
 
-	全文搜索：
+全文搜索：
 
 ```js
 GET /megacorp/employee/_search
@@ -68,7 +68,7 @@ GET /megacorp/employee/_search
 }
 ```
 
-	短语搜索：
+短语搜索：
 
 ```js
 GET /megacorp/employee/_search
@@ -99,11 +99,11 @@ GET /megacorp/employee/_search
 
 悲观并发控制
 
-	这种方法被关系型数据库广泛使用，它假定有变更冲突可能发生，因此阻塞访问资源以防止冲突。 一个典型的例子是读取一行数据之前先将其锁住，确保只有放置锁的线程能够对这行数据进行修改。
+这种方法被关系型数据库广泛使用，它假定有变更冲突可能发生，因此阻塞访问资源以防止冲突。 一个典型的例子是读取一行数据之前先将其锁住，确保只有放置锁的线程能够对这行数据进行修改。
 
 乐观并发控制
 
-	Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且不会阻塞正在尝试的操作。 然而，如果源数据在读写当中被修改，更新将会失败。应用程序接下来将决定该如何解决冲突。 例如，可以重试更新、使用新的数据、或者将相关情况报告给用户。
+Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且不会阻塞正在尝试的操作。 然而，如果源数据在读写当中被修改，更新将会失败。应用程序接下来将决定该如何解决冲突。 例如，可以重试更新、使用新的数据、或者将相关情况报告给用户。
 
 ```js
 PUT /website/blog/1?version=1 
