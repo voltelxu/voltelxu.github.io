@@ -24,7 +24,7 @@ su es //以es用户进入
 	
 插入：
 
-```
+```shell
 *          soft      nofile       65536
 *          hard      nofile       65537
 *          soft      nproc       65536
@@ -93,7 +93,7 @@ GET /megacorp/employee/_search
 
 #### 6、 元数据
 
-\_index，_type， _id 
+\_index，\_type， \_id 
 
 #### 7、 处理冲突
 
