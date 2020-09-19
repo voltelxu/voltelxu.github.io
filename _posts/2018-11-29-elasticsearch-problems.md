@@ -2,6 +2,7 @@
 layout: post
 title: "elasticsearch 中的问题"
 date: 2018-11-29 17:41:09 +0000
+summary: elasticsearch 安装问题
 categories: es
 ---
 
